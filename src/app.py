@@ -53,6 +53,7 @@ def get_activities():
 
 
 @app.post("/activities/{activity_name}/signup")
+# Validate student is not already signed up and activity is not full
 def signup_for_activity(activity_name: str, email: str):
     """Sign up a student for an activity"""
     # Validate activity exists
@@ -65,3 +66,43 @@ def signup_for_activity(activity_name: str, email: str):
     # Add student
     activity["participants"].append(email)
     return {"message": f"Signed up {email} for {activity_name}"}
+    # Add additional activities
+    activities.update({
+        "Soccer Team": {
+            "description": "Team practices and intramural matches to develop soccer skills and teamwork",
+            "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
+            "max_participants": 22,
+            "participants": ["liam@mergington.edu", "ava@mergington.edu"]
+        },
+        "Basketball Club": {
+            "description": "Recreational and competitive basketball training and games",
+            "schedule": "Mondays and Wednesdays, 4:00 PM - 5:30 PM",
+            "max_participants": 15,
+            "participants": ["noah@mergington.edu", "mia@mergington.edu"]
+        },
+        "Art Club": {
+            "description": "Explore drawing, painting, and mixed media projects in a collaborative studio",
+            "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 25,
+            "participants": ["sophia@mergington.edu", "lucas@mergington.edu"]
+        },
+        "Drama Club": {
+            "description": "Acting workshops, rehearsals, and seasonal productions for all skill levels",
+            "schedule": "Fridays, 3:30 PM - 6:00 PM",
+            "max_participants": 30,
+            "participants": ["isabella@mergington.edu", "ethan@mergington.edu"]
+        },
+        "Science Club": {
+            "description": "Hands-on experiments, guest speakers, and science fair project support",
+            "schedule": "Thursdays, 3:30 PM - 4:30 PM",
+            "max_participants": 20,
+            "participants": ["oliver@mergington.edu", "amelia@mergington.edu"]
+        },
+        "Debate Team": {
+            "description": "Practice persuasive speaking, research current topics, and compete in debates",
+            "schedule": "Tuesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 16,
+            "participants": ["william@mergington.edu", "charlotte@mergington.edu"]
+        }
+    })
+
